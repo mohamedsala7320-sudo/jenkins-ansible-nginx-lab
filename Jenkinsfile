@@ -10,7 +10,7 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                bat 'C:\\Windows\\System32\\wsl.exe bash -c "cd $(wslpath \'%WORKSPACE%\') && ansible-playbook -i inventory.ini playbook.yml"'
+                sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
         }
     }
