@@ -1,0 +1,18 @@
+- name: Install and configure Nginx locally
+  hosts: local
+  become: true
+  tasks:
+    - name: Refresh APT package cache
+      apt:
+        update_cache: yes
+      
+    - name: Install Nginx package
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start Nginx service and enable it at boot
+      service:
+        name: nginx
+        state: started
+        enabled: yes
